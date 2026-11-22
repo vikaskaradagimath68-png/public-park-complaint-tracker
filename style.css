@@ -1,0 +1,900 @@
+
+/* ==========================================
+   GREENCARE - PARK MAINTENANCE TRACKER
+   COMPLETE UPDATED STYLE.CSS
+========================================== */
+
+/* GLOBAL SETTINGS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #ffffff;
+    color: #26352c;
+}
+
+/* NAVIGATION */
+
+header {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px #00000010;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: #187747;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #344b3b;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #20945a;
+}
+
+/* HOME PAGE */
+
+.hero {
+    min-height: 530px;
+    display: flex;
+    align-items: center;
+    padding: 70px 10%;
+    color: white;
+    background:
+        linear-gradient(90deg, #123e2be8, #123e2b55),
+        url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600")
+        center/cover;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.tagline {
+    color: #b8edc8;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin: 22px 0;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* BUTTONS */
+
+.btn {
+    display: inline-block;
+    background: #218b50;
+    color: white;
+    padding: 14px 23px;
+    border: none;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #176d3d;
+    transform: translateY(-2px);
+}
+
+.admin-button {
+    background-color: #245B9B;
+}
+
+.admin-button:hover {
+    background-color: #194477;
+}
+
+.role-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.back-button {
+    background-color: #218838;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+.back-button:hover {
+    background-color: #155724;
+}
+
+/* DASHBOARD SEPARATION */
+
+.dashboard-view {
+    display: none;
+    min-height: 70vh;
+}
+
+#publicView,
+#adminView {
+    background-color: #f7faf7;
+}
+
+#publicView .section,
+#adminView .section {
+    padding-top: 30px;
+}
+
+#track,
+#admin,
+#report,
+#publicHistory {
+    scroll-margin-top: 20px;
+}
+
+/* GENERAL SECTIONS */
+
+.section {
+    padding: 75px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title span {
+    color: #218b50;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    color: #194b30;
+    margin: 12px 0;
+}
+
+.section-title p {
+    color: #718078;
+    line-height: 1.7;
+}
+
+.intro-text {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+    line-height: 1.9;
+    color: #647268;
+    font-size: 17px;
+}
+
+/* CATEGORY SECTION */
+
+.categories {
+    background: #f3f8f4;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.category-card {
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px #00000008;
+}
+
+.category-card div {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.category-card h3 {
+    color: #20583a;
+    margin-bottom: 12px;
+}
+
+.category-card p {
+    color: #718078;
+    line-height: 1.7;
+}
+
+/* COMPLAINT FORM */
+
+.form-card {
+    max-width: 650px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 5px 25px #00000010;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.form-card label {
+    font-weight: bold;
+    color: #315440;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea,
+.track-box input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d5e0d8;
+    border-radius: 7px;
+    font-size: 15px;
+    outline: none;
+    background: white;
+}
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus,
+.track-box input:focus {
+    border-color: #218b50;
+    box-shadow: 0 0 0 3px #218b5018;
+}
+
+.form-card textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-card button {
+    margin-top: 10px;
+}
+
+#submitMessage {
+    color: #187747;
+    font-weight: bold;
+}
+
+/* PHOTO UPLOAD AND PREVIEW */
+
+#issuePhoto {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #f1f8f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#photoPreview {
+    margin-top: 10px;
+}
+
+#photoPreview img {
+    width: 200px;
+    max-width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 2px solid #d5e0d8;
+}
+
+/* TRACK COMPLAINT */
+
+.tracking {
+    background: #f3f8f4;
+}
+
+.track-box {
+    display: flex;
+    gap: 12px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.track-box input {
+    flex: 1;
+}
+
+#trackResult {
+    max-width: 600px;
+    margin: 25px auto 0;
+}
+
+.result-card {
+    background: white;
+    border: 1px solid #dce8de;
+    padding: 22px;
+    border-radius: 10px;
+    line-height: 2;
+    overflow-wrap: anywhere;
+}
+
+/* ADMIN LOGIN PANEL */
+
+#adminLoginPanel {
+    max-width: 500px;
+    margin: 35px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e0eae2;
+    box-shadow: 0 5px 25px #00000010;
+}
+
+#adminLoginPanel .section-title {
+    margin-bottom: 25px;
+}
+
+#adminLoginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+#adminLoginForm label {
+    font-weight: bold;
+    color: #315440;
+}
+
+#adminLoginForm input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d5e0d8;
+    border-radius: 7px;
+    font-size: 15px;
+    outline: none;
+    background: #fbfdfb;
+}
+
+#adminLoginForm input:focus {
+    border-color: #218b50;
+    box-shadow: 0 0 0 3px #218b5018;
+}
+
+#adminLoginForm button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#adminLoginMessage {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ADMIN DASHBOARD CONTENT */
+
+#adminContent {
+    width: 100%;
+}
+
+/* LOGOUT BUTTON */
+
+#adminLogoutButton {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+#adminLogoutButton:hover {
+    background: #962d22;
+}
+
+/* PUBLIC COMPLAINT HISTORY */
+
+#publicHistory {
+    margin-top: 40px;
+    background: #f3f8f4;
+}
+
+#publicHistory .section-title {
+    margin-bottom: 30px;
+}
+
+#publicHistory .table-wrapper {
+    margin-top: 20px;
+}
+
+#publicComplaintTable td {
+    vertical-align: middle;
+}
+
+/* ADMIN DASHBOARD STATISTICS */
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: #f0f7f1;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #00000008;
+}
+
+.stat-card h3 {
+    font-size: 30px;
+    color: #218b50;
+}
+
+.stat-card p {
+    margin-top: 8px;
+    color: #637468;
+}
+
+/* ADMIN COMPLAINT TABLE AND PUBLIC HISTORY TABLE */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px #00000008;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 750px;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e9e3;
+}
+
+th {
+    background: #eaf4ec;
+    color: #20583a;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+td {
+    color: #46564a;
+    font-size: 14px;
+}
+
+tbody tr:hover {
+    background: #f7fbf7;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* COMPLAINT PHOTO IN TABLE */
+
+td img {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #d5e0d8;
+}
+
+/* STATUS DROPDOWN - ADMIN TABLE */
+
+td select {
+    padding: 8px;
+    border: 1px solid #d5e0d8;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    color: #26352c;
+}
+
+/* PUBLIC HISTORY IS READ-ONLY */
+/* No edit controls are added by this CSS. */
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #17432c;
+    color: white;
+    line-height: 2;
+}
+
+/* TABLET AND MOBILE RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 55px 6%;
+        min-height: 450px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .track-box {
+        flex-direction: column;
+    }
+
+    .section {
+        padding: 55px 6%;
+    }
+
+    .form-card {
+        padding: 25px;
+    }
+
+    .section-title h2 {
+        font-size: 27px;
+    }
+
+    #adminLoginPanel {
+        padding: 25px;
+    }
+
+    #publicHistory {
+        padding: 20px;
+    }
+}
+
+/* SMALL MOBILE SCREENS */
+
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .admin-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .role-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .role-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    .section-title h2 {
+        font-size: 24px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    #adminLoginPanel {
+        padding: 20px;
+    }
+
+    #publicHistory {
+        padding: 15px;
+    }
+
+    .back-button {
+        width: 100%;
+    }
+}
+
+/* ==========================================
+   GREENCARE - ADMIN COMPLAINT PHOTO ZOOM
+========================================== */
+
+/* Administrator complaint photos */
+
+.zoomable-photo {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #d5e0d8;
+    cursor: zoom-in;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.zoomable-photo:hover {
+    transform: scale(1.06);
+    box-shadow: 0 4px 12px #00000030;
+}
+
+/* Enlarged photo background */
+
+.photo-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 30px;
+}
+
+/* Enlarged complaint photo */
+
+.photo-modal img {
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+
+    border: 3px solid white;
+    border-radius: 10px;
+
+    cursor: default;
+}
+
+/* Photo viewer caption */
+
+.photo-modal p {
+    color: white;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Close button */
+
+.close-photo {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+
+    color: white;
+    background: transparent;
+    border: none;
+
+    font-size: 45px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.close-photo:hover {
+    color: #b8edc8;
+}
+
+/* Mobile photo viewer */
+
+@media (max-width: 600px) {
+
+    .photo-modal {
+        padding: 15px;
+    }
+
+    .photo-modal img {
+        max-width: 95%;
+        max-height: 70vh;
+    }
+
+    .close-photo {
+        top: 10px;
+        right: 18px;
+        font-size: 38px;
+    }
+}
+/* ADMIN COMPLAINT PHOTO ZOOM */
+
+.zoomable-photo {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+}
+
+.zoomable-photo:hover {
+    transform: scale(1.05);
+}
+
+.photo-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.photo-modal img {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.photo-modal p {
+    color: white;
+    margin-top: 15px;
+}
+
+.close-photo {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+}
+#parkMap {
+    width: 100%;
+    height: 350px;
+    margin: 15px 0;
+    border-radius: 10px;
+    border: 2px solid #2e7d32;
+    z-index: 1;
+}
+
+#parkLocation {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #f5f5f5;
+}
+
+#mapMessage {
+    color: #2e7d32;
+    margin-bottom: 15px;
+}
+.park-search-box {
+    display: flex;
+    gap: 10px;
+    margin: 12px 0;
+    align-items: center;
+}
+
+.park-search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.park-search-box button {
+    white-space: nowrap;
+}
+
+#searchMessage {
+    margin: 8px 0 12px;
+    color: #2e7d32;
+}
+
+#parkMap {
+    width: 100%;
+    height: 350px;
+    margin: 15px 0;
+    border-radius: 10px;
+    border: 2px solid #2e7d32;
+    z-index: 1;
+}
+
+#parkLocation {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #f5f5f5;
+}
+
+@media (max-width: 600px) {
+    .park-search-box {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .park-search-box button {
+        width: 100%;
+    }
+}

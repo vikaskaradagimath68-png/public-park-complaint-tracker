@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GreenCare | Park Maintenance Tracker</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet Map CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- ======================================
+         HEADER
+    ======================================= -->
+
+    <header>
+        <nav class="navbar">
+
+            <a href="#" class="logo" onclick="showView('home'); return false;">
+                🌿 GreenCare
+            </a>
+
+            <div class="nav-links">
+
+                <a href="#" onclick="showView('home'); return false;">
+                    Home
+                </a>
+
+                <a href="#" onclick="showView('publicView'); return false;">
+                    Public
+                </a>
+
+                <a href="#" onclick="showView('adminView'); return false;">
+                    Administrator
+                </a>
+
+            </div>
+
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- ======================================
+             HOME PAGE
+        ======================================= -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <span class="tagline">
+                    A GREENER TOMORROW STARTS TODAY
+                </span>
+
+                <h1>Let's Keep Our Parks Clean & Green.</h1>
+
+                <p>
+                    Report park maintenance problems, track your complaints
+                    and help make public spaces better for everyone.
+                </p>
+
+                <h2>Select Your Dashboard</h2>
+
+                <div class="role-buttons">
+
+                    <button
+                        type="button"
+                        class="btn"
+                        onclick="showView('publicView')">
+
+                        Public
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn admin-button"
+                        onclick="showView('adminView')">
+
+                        Administrator
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             PUBLIC DASHBOARD
+        ======================================= -->
+
+        <section id="publicView" class="dashboard-view">
+
+            <div class="section">
+
+                <button
+                    type="button"
+                    class="back-button"
+                    onclick="showView('home')">
+
+                    ← Back to Home
+
+                </button>
+
+                <div class="section-title">
+
+                    <span>PUBLIC PORTAL</span>
+
+                    <h2>Public Dashboard</h2>
+
+                    <p>
+                        Report park and garden maintenance problems.
+                    </p>
+
+                </div>
+
+
+                <!-- INTRODUCTION -->
+
+                <div class="intro-text">
+
+                    GreenCare allows citizens to report problems such as
+                    garbage, broken lights, damaged benches and gardening
+                    issues. Help us keep public parks clean and green.
+
+                </div>
+
+
+                <!-- ======================================
+                     REPORT COMPLAINT
+                ======================================= -->
+
+                <section id="report" class="section">
+
+                    <div class="section-title">
+
+                        <span>RAISE YOUR VOICE</span>
+
+                        <h2>Report a Complaint</h2>
+
+                        <p>
+                            Tell us about a problem in your local park.
+                        </p>
+
+                    </div>
+
+
+                    <form id="complaintForm" class="form-card">
+
+                        <!-- CITIZEN NAME -->
+
+                        <label for="citizenName">
+                            Your Name
+                        </label>
+
+                        <input
+                            id="citizenName"
+                            type="text"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+
+                        <!-- CITIZEN EMAIL -->
+
+                        <label for="citizenEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            id="citizenEmail"
+                            type="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+
+                        <!-- ======================================
+                             SEARCH PARK BY NAME
+                        ======================================= -->
+
+                        <label for="parkSearch">
+                            Search Park / Garden by Name
+                        </label>
+
+                        <div class="park-search-box">
+
+                            <input
+                                type="text"
+                                id="parkSearch"
+                                placeholder="Example: Cubbon Park, Bengaluru"
+                                autocomplete="off"
+                            >
+
+                            <button
+                                type="button"
+                                id="searchParkButton"
+                                class="btn">
+
+                                Search Park
+
+                            </button>
+
+                        </div>
+
+                        <p
+                            id="searchMessage"
+                            aria-live="polite">
+                        </p>
+
+
+                        <!-- ======================================
+                             INTERACTIVE PARK MAP
+                        ======================================= -->
+
+                        <label for="parkLocation">
+                            Selected Park / Garden Location
+                        </label>
+
+                        <p class="photo-help">
+                            Search for a park above or click directly on
+                            the map to select its location.
+                        </p>
+
+                        <div id="parkMap"></div>
+
+
+                        <!-- SELECTED PARK ADDRESS -->
+
+                        <input
+                            type="text"
+                            id="parkLocation"
+                            placeholder="Selected park address will appear here"
+                            readonly
+                            required
+                        >
+
+
+                        <!-- HIDDEN COORDINATES -->
+
+                        <input
+                            type="hidden"
+                            id="parkLatitude"
+                        >
+
+                        <input
+                            type="hidden"
+                            id="parkLongitude"
+                        >
+
+
+                        <p
+                            id="mapMessage"
+                            aria-live="polite">
+
+                            Search for a park or click on the map to
+                            select its location.
+
+                        </p>
+
+
+                        <!-- ======================================
+                             COMPLAINT CATEGORY
+                        ======================================= -->
+
+                        <label for="category">
+                            Complaint Category
+                        </label>
+
+                        <select id="category" required>
+
+                            <option value="">
+                                Select a category
+                            </option>
+
+                            <option value="Garbage Issues">
+                                Garbage Issues
+                            </option>
+
+                            <option value="Broken Lights">
+                                Broken Lights
+                            </option>
+
+                            <option value="Damaged Benches">
+                                Damaged Benches
+                            </option>
+
+                            <option value="Garden Issues">
+                                Garden Issues
+                            </option>
+
+                            <option value="Water Problems">
+                                Water Problems
+                            </option>
+
+                            <option value="Other Issues">
+                                Other Issues
+                            </option>
+
+                        </select>
+
+
+                        <!-- ======================================
+                             COMPLAINT DESCRIPTION
+                        ======================================= -->
+
+                        <label for="description">
+                            Complaint Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            placeholder="Describe the problem..."
+                            required
+                        ></textarea>
+
+
+                        <!-- ======================================
+                             PHOTO UPLOAD
+                        ======================================= -->
+
+                        <div class="photo-upload-section">
+
+                            <label for="issuePhoto">
+                                📷 Upload Photo of Garden Issue
+                            </label>
+
+                            <input
+                                type="file"
+                                id="issuePhoto"
+                                accept="image/jpeg,image/png,image/webp"
+                                required
+                            >
+
+                            <p class="photo-help">
+                                Upload a JPG, PNG or WEBP image
+                                (maximum 2 MB).
+                            </p>
+
+                            <div id="photoPreview"></div>
+
+                        </div>
+
+
+                        <!-- SUBMIT COMPLAINT -->
+
+                        <button type="submit" class="btn">
+
+                            Submit Complaint
+
+                        </button>
+
+                        <p
+                            id="submitMessage"
+                            aria-live="polite">
+                        </p>
+
+                    </form>
+
+                </section>
+
+
+                <!-- ======================================
+                     PUBLIC COMPLAINT HISTORY
+                     READ-ONLY
+                ======================================= -->
+
+                <section id="publicHistory" class="section">
+
+                    <div class="section-title">
+
+                        <span>COMPLAINT UPDATES</span>
+
+                        <h2>Complaint History</h2>
+
+                        <p>
+                            View submitted complaints and their current status.
+                            This section is read-only.
+                        </p>
+
+                    </div>
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Complaint ID</th>
+                                    <th>Park</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Photo</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="publicComplaintTable">
+
+                                <tr>
+
+                                    <td colspan="6">
+                                        No complaints submitted yet.
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             ADMINISTRATOR DASHBOARD
+        ======================================= -->
+
+        <section id="adminView" class="dashboard-view">
+
+            <div class="section">
+
+                <button
+                    type="button"
+                    class="back-button"
+                    onclick="showView('home')">
+
+                    ← Back to Home
+
+                </button>
+
+
+                <!-- ======================================
+                     ADMINISTRATOR LOGIN
+                ======================================= -->
+
+                <div id="adminLoginPanel" class="form-card">
+
+                    <div class="section-title">
+
+                        <span>SECURE ACCESS</span>
+
+                        <h2>Administrator Login</h2>
+
+                        <p>
+                            Enter your administrator Gmail and password
+                            to continue.
+                        </p>
+
+                    </div>
+
+                    <form id="adminLoginForm">
+
+                        <label for="adminEmail">
+                            Administrator Gmail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="adminEmail"
+                            placeholder="Enter administrator Gmail"
+                            required
+                        >
+
+                        <label for="adminPassword">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="adminPassword"
+                            placeholder="Enter password"
+                            required
+                        >
+
+                        <button type="submit" class="btn">
+                            Login
+                        </button>
+
+                        <p
+                            id="adminLoginMessage"
+                            aria-live="polite">
+                        </p>
+
+                    </form>
+
+                </div>
+
+
+                <!-- ======================================
+                     ADMINISTRATOR CONTENT
+                     HIDDEN BEFORE LOGIN
+                ======================================= -->
+
+                <div id="adminContent" style="display: none;">
+
+                    <div class="section-title">
+
+                        <span>MANAGEMENT PORTAL</span>
+
+                        <h2>Administrator Dashboard</h2>
+
+                        <p>
+                            Track complaints and manage their progress.
+                        </p>
+
+                    </div>
+
+
+                    <!-- LOGOUT BUTTON -->
+
+                    <button
+                        type="button"
+                        class="back-button"
+                        id="adminLogoutButton">
+
+                        Logout
+
+                    </button>
+
+
+                    <!-- ======================================
+                         TRACK COMPLAINT
+                    ======================================= -->
+
+                    <section id="track" class="section tracking">
+
+                        <div class="section-title">
+
+                            <span>CHECK YOUR REQUEST</span>
+
+                            <h2>Track Complaint</h2>
+
+                            <p>
+                                Enter your complaint ID to check its current status.
+                            </p>
+
+                        </div>
+
+                        <div class="track-box">
+
+                            <input
+                                type="text"
+                                id="trackId"
+                                placeholder="Example: GC12345678"
+                            >
+
+                            <button
+                                type="button"
+                                class="btn"
+                                id="trackButton">
+
+                                Track Now
+
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="trackResult"
+                            aria-live="polite">
+                        </div>
+
+                    </section>
+
+
+                    <!-- ======================================
+                         ADMIN COMPLAINT MANAGEMENT
+                    ======================================= -->
+
+                    <section id="admin" class="section admin">
+
+                        <div class="section-title">
+
+                            <span>COMPLAINT MANAGEMENT</span>
+
+                            <h2>All Complaints</h2>
+
+                            <p>
+                                View complaints and update their progress.
+                            </p>
+
+                        </div>
+
+
+                        <!-- ADMIN STATISTICS -->
+
+                        <div class="admin-stats">
+
+                            <div class="stat-card">
+
+                                <h3 id="totalCount">0</h3>
+
+                                <p>Total Complaints</p>
+
+                            </div>
+
+                            <div class="stat-card">
+
+                                <h3 id="pendingCount">0</h3>
+
+                                <p>Pending</p>
+
+                            </div>
+
+                            <div class="stat-card">
+
+                                <h3 id="progressCount">0</h3>
+
+                                <p>In Progress</p>
+
+                            </div>
+
+                            <div class="stat-card">
+
+                                <h3 id="resolvedCount">0</h3>
+
+                                <p>Resolved</p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ADMIN COMPLAINT TABLE -->
+
+                        <div class="table-wrapper">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Complaint ID</th>
+                                        <th>Citizen</th>
+                                        <th>Park</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Uploaded Photo</th>
+                                        <th>Update Status</th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="complaintTable">
+
+                                    <tr>
+
+                                        <td colspan="7">
+                                            No complaints submitted yet.
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ======================================
+         COMPLAINT PHOTO ZOOM MODAL
+    ======================================= -->
+
+    <div
+        id="photoModal"
+        class="photo-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Enlarged complaint photo"
+        style="display: none;">
+
+        <button
+            type="button"
+            id="closePhotoModal"
+            class="close-photo"
+            aria-label="Close photo viewer">
+
+            &times;
+
+        </button>
+
+        <img
+            id="enlargedPhoto"
+            src=""
+            alt="Enlarged complaint photo">
+
+        <p>Complaint Photo</p>
+
+    </div>
+
+
+    <!-- ======================================
+         FOOTER
+    ======================================= -->
+
+    <footer>
+
+        <h2>🌿 GreenCare</h2>
+
+        <p>
+            Working Together for Cleaner and Greener Public Parks.
+        </p>
+
+        <p>
+            © 2026 GreenCare | College Project
+        </p>
+
+    </footer>
+
+
+    <!-- ======================================
+         FIREBASE AUTHENTICATION LIBRARIES
+    ======================================= -->
+
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+
+
+    <!-- ======================================
+         LEAFLET MAP LIBRARY
+    ======================================= -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+    <!-- ======================================
+         GREENCARE JAVASCRIPT
+    ======================================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
